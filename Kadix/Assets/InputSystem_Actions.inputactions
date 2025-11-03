@@ -17,12 +17,12 @@
                 },
                 {
                     "name": "Pulo",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "b8fe35df-9e4d-4d45-9ae9-2b21468a2690",
-                    "expectedControlType": "",
+                    "expectedControlType": "Digital",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [

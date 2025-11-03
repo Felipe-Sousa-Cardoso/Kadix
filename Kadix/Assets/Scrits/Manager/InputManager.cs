@@ -30,7 +30,7 @@ public class InputManager : MonoBehaviour
     bool Input_JogadorMovimentoPulo; //Pulo
     void OnPulo(InputValue input)
     {
-        Input_JogadorMovimentoPulo = input.Get<bool>();
+        Input_JogadorMovimentoPulo = input.isPressed;
     }
     public static bool GetInput_jogadorMovimentoPulo()
     {

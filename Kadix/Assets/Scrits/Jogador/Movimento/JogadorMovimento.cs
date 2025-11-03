@@ -15,10 +15,10 @@ public class JogadorMovimento : MonoBehaviour
     private int velocidade = 5; //Velocidade de movimento do jogador
     public int Velocidade { get => velocidade; set => velocidade = value; }
 
-    private bool puloInput; //Altura máxima que um único pulo pode chegar, é aplicado como tempo
+    public bool puloInput; //Altura máxima que um único pulo pode chegar, é aplicado como tempo
     public bool PuloInput { get => puloInput; set => puloInput = value; }
 
-    private float alturaDoPulo = 1.0f; //Altura máxima que um único pulo pode chegar, é aplicado como tempo
+    private float alturaDoPulo = 0.2f; //Altura máxima que um único pulo pode chegar, é aplicado como tempo
     public float AlturaDoPulo { get => alturaDoPulo; set => alturaDoPulo = value; }
 
     #endregion
