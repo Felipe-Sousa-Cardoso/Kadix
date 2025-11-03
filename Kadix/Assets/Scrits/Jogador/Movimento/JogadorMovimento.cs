@@ -33,6 +33,6 @@ public class JogadorMovimento : MonoBehaviour
     void Update()
     {
         MoveInput = InputManager.GetInput_jogadorMovimento();
-        puloInput = InputManager.GetInput_jogadorMovimentoPulo();
+        //PuloInput = InputManager.GetInput_jogadorMovimentoPulo();
     }
 }

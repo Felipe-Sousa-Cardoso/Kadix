@@ -17,28 +17,18 @@ public class InputManager : MonoBehaviour
 
     }
     
-    Vector2 Input_jogadorMovimento; //movimento basico para os lados
-    void OnMovimento(InputValue input)
+    InputAction InputA_jogadorMovimento;   //movimento basico para os lados
+
+    private void Start()
     {
-        Input_jogadorMovimento = input.Get<Vector2>();
+        InputA_jogadorMovimento = InputSystem.actions.FindAction("Movimento");
     }
     public static Vector2 GetInput_jogadorMovimento()
     {
-        return Instancia.Input_jogadorMovimento;
+        return Instancia.InputA_jogadorMovimento.ReadValue<Vector2>();
     }
+    
 
-    bool Input_JogadorMovimentoPulo; //Pulo
-    void OnPulo(InputValue input)
-    {
-        Input_JogadorMovimentoPulo = input.isPressed;
-    }
-    public static bool GetInput_jogadorMovimentoPulo()
-    {
-        return Instancia.Input_JogadorMovimentoPulo;
-    }
 
-    private void LateUpdate()
-    {
-        Instancia.Input_JogadorMovimentoPulo = false;
-    }
+
 }
