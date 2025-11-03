@@ -620,7 +620,6 @@ MonoBehaviour:
   layerChao:
     serializedVersion: 2
     m_Bits: 8
-  offset: {x: 0, y: 0, z: 0}
 --- !u!50 &890345796
 Rigidbody2D:
   serializedVersion: 5
@@ -756,7 +755,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
   m_Actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  m_NotificationBehavior: 0
+  m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -767,7 +766,15 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 22a2671f-1359-4429-ab0a-a128f0ee76bd
+    m_ActionName: 'Player/Movimento[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b8fe35df-9e4d-4d45-9ae9-2b21468a2690
+    m_ActionName: 'Player/Pulo[/Keyboard/space]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -785,6 +792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef25f106074a3494dbdc2097308cfd87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputManager
+  pulando: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

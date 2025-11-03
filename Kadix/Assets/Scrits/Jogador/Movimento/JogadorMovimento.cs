@@ -36,7 +36,7 @@ public class JogadorMovimento : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MoveInput = InputManager.GetInput_jogadorMovimento();
+        moveInput = InputManager.Instancia.InputA_jogadorMovimento.ReadValue<Vector2>();
         noChao = Physics2D.OverlapBox(transform.position+offset, new Vector2(0.5f,0.1f),0f, layerChao); //Verifica o chão corretamente
     }
     private void OnDrawGizmosSelected()

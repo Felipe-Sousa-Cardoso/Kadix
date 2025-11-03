@@ -4,6 +4,10 @@ using UnityEngine.InputSystem;
 public class InputManager : MonoBehaviour
 {
     public static InputManager Instancia;
+
+    public InputAction InputA_jogadorMovimento;
+    public InputAction Input_JogadorMovimentoPulo;
+
     void Awake() //Verificação de unicidade
     {
         if (Instancia == null)
@@ -15,20 +19,9 @@ public class InputManager : MonoBehaviour
             Destroy(this);
         }
 
-    }
-    
-    InputAction InputA_jogadorMovimento;   //movimento basico para os lados
-
-    private void Start()
-    {
         InputA_jogadorMovimento = InputSystem.actions.FindAction("Movimento");
+        Input_JogadorMovimentoPulo = InputSystem.actions.FindAction("Pulo");
     }
-    public static Vector2 GetInput_jogadorMovimento()
-    {
-        return Instancia.InputA_jogadorMovimento.ReadValue<Vector2>();
-    }
-    
 
-
-
+   
 }
