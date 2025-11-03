@@ -13,20 +13,22 @@ public class JogadorPulo : MonoBehaviour
 
     private void Update()
     {
-        if (JoggMovimento.MoveInput.y == 0 & isJump) //Verifica se o botão de pulo foi solto mas ainda não foi negado a variável isJump, fazendo com que essa linha só execute uma vez
-        {
-            JoggMovimento.Rb.linearVelocity = new Vector2(JoggMovimento.Rb.linearVelocity.x, JoggMovimento.Rb.linearVelocityY*0.1f); //Desacelera bruscamente o Jogador qunado o botão é solto
-        }
-        if (JoggMovimento.MoveInput.y==1 & tempoPulo < JoggMovimento.AlturaDoPulo) //Se o input está pressiondo e o tempo de pulo ainda não acabou continua a subida
+        if (JoggMovimento.MoveInput.y == 1 & JoggMovimento.NoChao & !isJump) //Se o input está pressiondo e o jogador está no chão o jogador começa a pular
         {
             isJump = true;
+        }
+        if (JoggMovimento.MoveInput.y != 1 & isJump || tempoPulo >= JoggMovimento.AlturaDoPulo) //Se o input não continua pressionado ou tempo de pulo acabou
+        {
+            isJump = false; //para de pular
+            tempoPulo = 0; //Reseta para um novo pulo
+            JoggMovimento.Rb.linearVelocity = new Vector2(JoggMovimento.Rb.linearVelocity.x, JoggMovimento.Rb.linearVelocity.y * 0.2f); //freia bruscamente o jogador Reseta para um novo pulo
+        }
+        if (isJump & tempoPulo < JoggMovimento.AlturaDoPulo) //Se o jogador ainda está pulando e ainda não atingiu a altura máxima
+        {
             tempoPulo += Time.deltaTime;
         }
-        else
-        {
-            isJump = false;
-            tempoPulo = 0;         
-        }
+       
+      
     }
     void FixedUpdate()
     {

@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 379271474}
   - component: {fileID: 379271473}
   - component: {fileID: 379271475}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Plataforma
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -616,6 +616,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8369ddd9ce56b994ba81524648afcf2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::JogadorMovimento
+  puloInput: 0
+  layerChao:
+    serializedVersion: 2
+    m_Bits: 8
+  offset: {x: 0, y: 0, z: 0}
 --- !u!50 &890345796
 Rigidbody2D:
   serializedVersion: 5
@@ -642,7 +647,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &890345797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -667,6 +672,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0475ea31c7fa97f439d543e85181201f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::JogadorPulo
+  isJump: 0
+  tempoPulo: 0
 --- !u!58 &890345799
 CircleCollider2D:
   m_ObjectHideFlags: 0

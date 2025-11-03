@@ -20,9 +20,13 @@ public class JogadorMovimento : MonoBehaviour
 
     private float alturaDoPulo = 0.2f; //Altura máxima que um único pulo pode chegar, é aplicado como tempo
     public float AlturaDoPulo { get => alturaDoPulo; set => alturaDoPulo = value; }
+  
+    private bool noChao; //Verifica se o jogador está sobre um terreno pulável
+    public bool NoChao { get => noChao; set => noChao = value; }
 
+    public LayerMask layerChao;
     #endregion
-
+    Vector3 offset = new Vector3 (0,-0.2f,0); //offset para a correta verificação do terreno
 
     void Start()
     {
@@ -33,6 +37,11 @@ public class JogadorMovimento : MonoBehaviour
     void Update()
     {
         MoveInput = InputManager.GetInput_jogadorMovimento();
-        //PuloInput = InputManager.GetInput_jogadorMovimentoPulo();
+        noChao = Physics2D.OverlapBox(transform.position+offset, new Vector2(0.5f,0.1f),0f, layerChao); //Verifica o chão corretamente
+    }
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = noChao ? Color.green : Color.red;
+        Gizmos.DrawWireCube(transform.position + offset, new Vector2(0.5f, 0.1f));
     }
 }
