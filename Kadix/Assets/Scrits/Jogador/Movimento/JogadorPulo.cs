@@ -8,11 +8,11 @@ public class JogadorPulo : MonoBehaviour
     bool isJump; //Verifica se o comando de pular foi dado, usado para altura do pulo e verificações
     float tempoPulo; //Altura do pulo em tempo
 
-    float coyotetime = 0.1f;
-    float coyotetimer;
-
+    float coyotetime = 0.05f;
+    public float coyotetimer;
     float bufftime = 0.1f;
-    float buffetimer;
+    public float bufftimer;
+    bool puloAtivo;
     void Start()
     {
         JoggMovimento = GetComponent<JogadorMovimento>(); //recebe o componente que contem as variáveis do Jogador
@@ -22,20 +22,28 @@ public class JogadorPulo : MonoBehaviour
     }
     void InputPuloPressionado(InputAction.CallbackContext context) //Faz com que o pulo comece
     {
-        if (JoggMovimento.NoChao & !isJump) 
-        {
-            isJump = true;
-        }
+        bufftimer = bufftime;
+        puloAtivo = true;
     }
     void InputPuloConcluido(InputAction.CallbackContext context) //Se ele está pulando encerra o pulo
     {
+        puloAtivo = false;
         if (isJump) 
         {
             puloConcluido();
         } 
     }
     private void Update()
-    {            
+    {
+        if (bufftimer > 0)
+        {            
+            bufftimer-=Time.deltaTime;
+            if (coyotetimer > 0 & !isJump &puloAtivo)
+            {
+                isJump = true;
+                bufftimer = 0;
+            }
+        }
         if (isJump & tempoPulo < JoggMovimento.AlturaDoPulo) //Se o jogador ainda está pulando e ainda não atingiu a altura máxima calcula o tempo
         {
             tempoPulo += Time.deltaTime;
@@ -44,6 +52,16 @@ public class JogadorPulo : MonoBehaviour
         {
             puloConcluido();
         }
+
+        if (JoggMovimento.NoChao) //Verificação do coyote time
+        {
+            coyotetimer = coyotetime;
+        }
+        else if(coyotetimer>0)
+        {
+            coyotetimer -= Time.deltaTime;
+        }
+
     }
     void FixedUpdate()
     {
@@ -56,6 +74,6 @@ public class JogadorPulo : MonoBehaviour
     {
         isJump = false; //para de pular
         tempoPulo = 0; //Reseta para um novo pulo
-        JoggMovimento.Rb.linearVelocity = new Vector2(JoggMovimento.Rb.linearVelocity.x, JoggMovimento.Rb.linearVelocity.y * 0.2f); //freia bruscamente o jogador 
+        JoggMovimento.Rb.linearVelocity = new Vector2(JoggMovimento.Rb.linearVelocity.x, JoggMovimento.Rb.linearVelocity.y * 0.1f); //freia bruscamente o jogador 
     }
 }

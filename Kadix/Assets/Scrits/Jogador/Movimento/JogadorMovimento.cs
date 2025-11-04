@@ -37,11 +37,11 @@ public class JogadorMovimento : MonoBehaviour
     void Update()
     {
         moveInput = InputManager.Instancia.InputA_jogadorMovimento.ReadValue<Vector2>();
-        noChao = Physics2D.OverlapBox(transform.position+offset, new Vector2(0.5f,0.1f),0f, layerChao); //Verifica o chão corretamente
+        noChao = Physics2D.OverlapBox(transform.position+offset, new Vector2(0.35f,0.1f),0f, layerChao); //Verifica o chão corretamente
     }
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = noChao ? Color.green : Color.red;
-        Gizmos.DrawWireCube(transform.position + offset, new Vector2(0.5f, 0.1f));
+        Gizmos.DrawWireCube(transform.position + offset, new Vector2(0.35f, 0.1f));
     }
 }
