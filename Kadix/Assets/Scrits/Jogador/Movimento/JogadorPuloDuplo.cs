@@ -1,20 +1,28 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class JogadorPuloDuplo : MonoBehaviour
+public class JogadorPuloDuplo : MonoBehaviour, Interfaces.IPulo
 {
     JogadorMovimento JoggMovimento;
     bool isJump; //Verifica se o comando de pular foi dado, usado para altura do pulo e verificações
     float timerPulo; //Altura atual do pulo em tempo
 
     bool puloDuploDisponivel = true;
+    
     void Start()
     {
         JoggMovimento = GetComponent<JogadorMovimento>();
-
-        InputManager.Instancia.Input_JogadorMovimentoPulo.started += InputPuloPressionado; //Inscreve nos input a ação de começar e finalizar o pulo
-        InputManager.Instancia.Input_JogadorMovimentoPulo.canceled += InputPuloConcluido;
     }
+    public bool PodePular()
+    {
+        return puloDuploDisponivel && !JoggMovimento.NoChao;
+    }
+
+    public void ExecutarPulo()
+    {
+        print("Pulo duplo");
+    }
+    /*
     void InputPuloPressionado(InputAction.CallbackContext context) //Faz com que o pulo comece
     {
         if (!JoggMovimento.NoChao&& puloDuploDisponivel)
@@ -62,4 +70,6 @@ public class JogadorPuloDuplo : MonoBehaviour
         timerPulo = 0; //Reseta para um novo pulo
         JoggMovimento.Rb.linearVelocity = new Vector2(JoggMovimento.Rb.linearVelocity.x, JoggMovimento.Rb.linearVelocity.y * 0.1f); //freia bruscamente o jogador 
     }
+    */
+
 }

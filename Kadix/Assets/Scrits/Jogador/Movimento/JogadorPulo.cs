@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static Interfaces;
 
-public class JogadorPulo : MonoBehaviour
+public class JogadorPulo : MonoBehaviour, Interfaces.IPulo
 {
     JogadorMovimento JoggMovimento;
 
@@ -12,27 +13,23 @@ public class JogadorPulo : MonoBehaviour
     float coyotetimer;
     float bufftime = 0.1f;
     float bufftimer;
+
     bool puloAtivo;
+  
+    public bool PodePular()
+    {
+        return coyotetimer > 0;
+    }
+
+    public void ExecutarPulo()
+    {
+        print("pulo normal");
+    }
     void Start()
     {
-        JoggMovimento = GetComponent<JogadorMovimento>(); //recebe o componente que contem as variáveis do Jogador
+        JoggMovimento = GetComponent<JogadorMovimento>();
+    }
 
-        InputManager.Instancia.Input_JogadorMovimentoPulo.started += InputPuloPressionado; //Inscreve nos input a ação de começar e finalizar o pulo
-        InputManager.Instancia.Input_JogadorMovimentoPulo.canceled += InputPuloConcluido;
-    }
-    void InputPuloPressionado(InputAction.CallbackContext context) //Faz com que o pulo comece
-    {
-        bufftimer = bufftime;
-        puloAtivo = true;
-    }
-    void InputPuloConcluido(InputAction.CallbackContext context) //Se ele está pulando encerra o pulo
-    {
-        puloAtivo = false;
-        if (isJump) 
-        {
-            puloConcluido();
-        } 
-    }
     private void Update()
     {
         if (bufftimer > 0)
@@ -79,4 +76,6 @@ public class JogadorPulo : MonoBehaviour
         timerPulo = 0; //Reseta para um novo pulo
         JoggMovimento.Rb.linearVelocity = new Vector2(JoggMovimento.Rb.linearVelocity.x, JoggMovimento.Rb.linearVelocity.y * 0.1f); //freia bruscamente o jogador 
     }
+
+ 
 }

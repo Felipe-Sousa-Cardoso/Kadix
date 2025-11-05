@@ -526,6 +526,7 @@ GameObject:
   - component: {fileID: 890345798}
   - component: {fileID: 890345800}
   - component: {fileID: 890345801}
+  - component: {fileID: 890345802}
   m_Layer: 0
   m_Name: Jogador
   m_TagString: Untagged
@@ -726,7 +727,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 890345790}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d0805e5b84f083489898f960ff8edc7, type: 3}
   m_Name: 
@@ -744,6 +745,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::JogadorDeslizarParede
   encostandoNaParede: 0
+--- !u!114 &890345802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890345790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34d9618f6cf7f704d8a66562e6594168, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JogadorControladorDePulo
 --- !u!1 &1195805475
 GameObject:
   m_ObjectHideFlags: 0
