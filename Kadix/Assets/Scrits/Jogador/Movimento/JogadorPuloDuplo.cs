@@ -1,51 +1,40 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class JogadorPulo : MonoBehaviour
+public class JogadorPuloDuplo : MonoBehaviour
 {
     JogadorMovimento JoggMovimento;
-
     bool isJump; //Verifica se o comando de pular foi dado, usado para altura do pulo e verificações
     float timerPulo; //Altura atual do pulo em tempo
 
-    float coyotetime = 0.05f;
-    float coyotetimer;
-    float bufftime = 0.1f;
-    float bufftimer;
-    bool puloAtivo;
+    bool puloDuploDisponivel = true;
     void Start()
     {
-        JoggMovimento = GetComponent<JogadorMovimento>(); //recebe o componente que contem as variáveis do Jogador
+        JoggMovimento = GetComponent<JogadorMovimento>();
 
         InputManager.Instancia.Input_JogadorMovimentoPulo.started += InputPuloPressionado; //Inscreve nos input a ação de começar e finalizar o pulo
         InputManager.Instancia.Input_JogadorMovimentoPulo.canceled += InputPuloConcluido;
     }
     void InputPuloPressionado(InputAction.CallbackContext context) //Faz com que o pulo comece
     {
-        bufftimer = bufftime;
-        puloAtivo = true;
+        if (!JoggMovimento.NoChao&& puloDuploDisponivel)
+        {
+            isJump = true;
+            puloDuploDisponivel=false;
+        }
     }
     void InputPuloConcluido(InputAction.CallbackContext context) //Se ele está pulando encerra o pulo
     {
-        puloAtivo = false;
-        if (isJump) 
+        if (isJump)
         {
             puloConcluido();
-        } 
-    }
-    private void Update()
-    {
-        if (bufftimer > 0)
-        {            
-            bufftimer-=Time.deltaTime;
-            if (coyotetimer > 0 & !isJump &puloAtivo)
-            {
-                isJump = true;
-                bufftimer = 0;
-            }
         }
+    }
+    // Update is called once per frame
+    void Update()
+    {
         if (isJump) //Se o jogador ainda está pulando e ainda não atingiu a altura máxima calcula o tempo
-        {          
+        {
             if (timerPulo < JoggMovimento.AlturaDoPulo)
             {
                 timerPulo += Time.deltaTime;
@@ -55,23 +44,17 @@ public class JogadorPulo : MonoBehaviour
                 puloConcluido();
             }
         }
-
-        if (JoggMovimento.NoChao) //Verificação do coyote time
+        if (JoggMovimento.NoChao && !puloDuploDisponivel)
         {
-            coyotetimer = coyotetime;
+            puloDuploDisponivel = true;
         }
-        else if(coyotetimer>0)
-        {
-            coyotetimer -= Time.deltaTime;
-        }
-
     }
     void FixedUpdate()
     {
         if (isJump)
         {
-            JoggMovimento.Rb.linearVelocity = new Vector2 (JoggMovimento.Rb.linearVelocity.x,5); //Executa a física do pulo
-        }    
+            JoggMovimento.Rb.linearVelocity = new Vector2(JoggMovimento.Rb.linearVelocity.x, 5); //Executa a física do pulo
+        }
     }
     void puloConcluido()
     {

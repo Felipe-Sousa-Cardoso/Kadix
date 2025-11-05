@@ -236,8 +236,8 @@ Transform:
   m_GameObject: {fileID: 379271471}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.683, y: -1.26, z: 0}
-  m_LocalScale: {x: 5.986, y: 1, z: 1}
+  m_LocalPosition: {x: -2.683, y: -4.0269, z: 0}
+  m_LocalScale: {x: 5.986, y: 6.5337, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -252,7 +252,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: d9bbf857c90a7eb48a479f8977cdfd30, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -520,10 +520,12 @@ GameObject:
   - component: {fileID: 890345792}
   - component: {fileID: 890345794}
   - component: {fileID: 890345796}
+  - component: {fileID: 890345799}
   - component: {fileID: 890345795}
   - component: {fileID: 890345797}
   - component: {fileID: 890345798}
-  - component: {fileID: 890345799}
+  - component: {fileID: 890345800}
+  - component: {fileID: 890345801}
   m_Layer: 0
   m_Name: Jogador
   m_TagString: Untagged
@@ -645,7 +647,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &890345797
 MonoBehaviour:
@@ -671,8 +673,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0475ea31c7fa97f439d543e85181201f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::JogadorPulo
-  coyotetimer: 0
-  bufftimer: 0
 --- !u!61 &890345799
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -719,6 +719,31 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.2, y: 0.2}
   m_EdgeRadius: 0
+--- !u!114 &890345800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890345790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d0805e5b84f083489898f960ff8edc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JogadorPuloDuplo
+--- !u!114 &890345801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890345790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31ae1e86967b1a04d9549a3c2d07694e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JogadorDeslizarParede
+  encostandoNaParede: 0
 --- !u!1 &1195805475
 GameObject:
   m_ObjectHideFlags: 0
@@ -747,7 +772,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: d9bbf857c90a7eb48a479f8977cdfd30, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
