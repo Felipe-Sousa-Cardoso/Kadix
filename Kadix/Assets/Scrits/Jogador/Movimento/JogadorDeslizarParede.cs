@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class JogadorDeslizarParede : MonoBehaviour
@@ -23,7 +22,7 @@ public class JogadorDeslizarParede : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (encostandoNaParede)
+        if (encostandoNaParede && !JoggMovimento.NoChao)
         {
             JoggMovimento.Rb.linearVelocity = new Vector2(0, -1f);
         }
