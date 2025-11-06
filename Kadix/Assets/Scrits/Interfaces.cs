@@ -6,5 +6,6 @@ public class Interfaces : MonoBehaviour
     {
         bool PodePular();
         void ExecutarPulo();
+        void CancelarPulo();
     }
 }

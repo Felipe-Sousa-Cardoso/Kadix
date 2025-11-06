@@ -11,19 +11,21 @@ public class JogadorPulo : MonoBehaviour, Interfaces.IPulo
 
     float coyotetime = 0.05f;
     float coyotetimer;
-    float bufftime = 0.1f;
-    float bufftimer;
-
-    bool puloAtivo;
-  
+    float bufftime = 0.2f;
+    float bufftimer; 
     public bool PodePular()
     {
-        return coyotetimer > 0;
+        return true;
     }
 
     public void ExecutarPulo()
     {
         print("pulo normal");
+        bufftimer = bufftime;
+    }
+    public void CancelarPulo()
+    {
+        puloConcluido();
     }
     void Start()
     {
@@ -35,7 +37,7 @@ public class JogadorPulo : MonoBehaviour, Interfaces.IPulo
         if (bufftimer > 0)
         {            
             bufftimer-=Time.deltaTime;
-            if (coyotetimer > 0 & !isJump &puloAtivo)
+            if (coyotetimer > 0 & !isJump)
             {
                 isJump = true;
                 bufftimer = 0;

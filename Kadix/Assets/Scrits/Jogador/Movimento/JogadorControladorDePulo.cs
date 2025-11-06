@@ -8,7 +8,7 @@ public class JogadorControladorDePulo : MonoBehaviour
 {
     protected JogadorMovimento JoggMovimento;
     [SerializeField] PuloWrapper[] pulos;
-
+    [SerializeField] PuloWrapper puloAtual;
     public struct PuloWrapper
     {
         public IPulo Interface;
@@ -38,7 +38,7 @@ public class JogadorControladorDePulo : MonoBehaviour
     }
     void InputPuloConcluido(InputAction.CallbackContext context) //Se ele está pulando encerra o pulo
     {
-
+        puloAtual.Interface.CancelarPulo();
     }
 
     public void TentarPular()
@@ -47,10 +47,10 @@ public class JogadorControladorDePulo : MonoBehaviour
         {
             if (pulo.Interface.PodePular())
             {
+                puloAtual = pulo;
                 pulo.Interface.ExecutarPulo();
                 return; // executa só o primeiro que for possível
             }
         }
-
     }
 }

@@ -18,7 +18,7 @@ public class JogadorMovimento : MonoBehaviour
     public bool puloInput; //Altura máxima que um único pulo pode chegar, é aplicado como tempo
     public bool PuloInput { get => puloInput; set => puloInput = value; }
 
-    private float alturaDoPulo = 0.2f; //Altura máxima que um único pulo pode chegar, é aplicado como tempo
+    private float alturaDoPulo = 0.5f; //Altura máxima que um único pulo pode chegar, é aplicado como tempo
     public float AlturaDoPulo { get => alturaDoPulo; set => alturaDoPulo = value; }
   
     private bool noChao; //Verifica se o jogador está sobre um terreno pulável

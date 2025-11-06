@@ -17,28 +17,22 @@ public class JogadorPuloDuplo : MonoBehaviour, Interfaces.IPulo
     {
         return puloDuploDisponivel && !JoggMovimento.NoChao;
     }
-
     public void ExecutarPulo()
     {
         print("Pulo duplo");
+        isJump = true;
+        puloDuploDisponivel = false;
     }
-    /*
-    void InputPuloPressionado(InputAction.CallbackContext context) //Faz com que o pulo comece
+    public void CancelarPulo()
     {
-        if (!JoggMovimento.NoChao&& puloDuploDisponivel)
-        {
-            isJump = true;
-            puloDuploDisponivel=false;
-        }
+        puloConcluido();
     }
-    void InputPuloConcluido(InputAction.CallbackContext context) //Se ele está pulando encerra o pulo
+    void puloConcluido()
     {
-        if (isJump)
-        {
-            puloConcluido();
-        }
+        isJump = false; //para de pular
+        timerPulo = 0; //Reseta para um novo pulo
+        JoggMovimento.Rb.linearVelocity = new Vector2(JoggMovimento.Rb.linearVelocity.x, JoggMovimento.Rb.linearVelocity.y * 0.1f); //freia bruscamente o jogador 
     }
-    // Update is called once per frame
     void Update()
     {
         if (isJump) //Se o jogador ainda está pulando e ainda não atingiu a altura máxima calcula o tempo
@@ -63,13 +57,5 @@ public class JogadorPuloDuplo : MonoBehaviour, Interfaces.IPulo
         {
             JoggMovimento.Rb.linearVelocity = new Vector2(JoggMovimento.Rb.linearVelocity.x, 5); //Executa a física do pulo
         }
-    }
-    void puloConcluido()
-    {
-        isJump = false; //para de pular
-        timerPulo = 0; //Reseta para um novo pulo
-        JoggMovimento.Rb.linearVelocity = new Vector2(JoggMovimento.Rb.linearVelocity.x, JoggMovimento.Rb.linearVelocity.y * 0.1f); //freia bruscamente o jogador 
-    }
-    */
-
+    }     
 }

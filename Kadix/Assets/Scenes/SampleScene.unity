@@ -523,8 +523,8 @@ GameObject:
   - component: {fileID: 890345799}
   - component: {fileID: 890345795}
   - component: {fileID: 890345797}
-  - component: {fileID: 890345798}
   - component: {fileID: 890345800}
+  - component: {fileID: 890345798}
   - component: {fileID: 890345801}
   - component: {fileID: 890345802}
   m_Layer: 0
@@ -674,6 +674,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0475ea31c7fa97f439d543e85181201f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::JogadorPulo
+  coyotetimer: 0
+  bufftimer: 0
 --- !u!61 &890345799
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -727,7 +729,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 890345790}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d0805e5b84f083489898f960ff8edc7, type: 3}
   m_Name: 
