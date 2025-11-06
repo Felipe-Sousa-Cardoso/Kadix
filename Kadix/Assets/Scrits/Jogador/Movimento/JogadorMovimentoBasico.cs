@@ -2,15 +2,24 @@ using UnityEngine;
 
 public class JogadorMovimentoBasico : MonoBehaviour
 {
-    JogadorMovimento JogMovimento;
+    JogadorMovimento JoggMovimento;
     void Start()
     {
-        JogMovimento = GetComponent<JogadorMovimento>(); //recebe o componente que contem as variáveis 
+        JoggMovimento = GetComponent<JogadorMovimento>(); //recebe o componente que contem as variáveis 
     }
 
     // Update is called once per frame
     void FixedUpdate()
-    {     
-        JogMovimento.Rb.linearVelocity = new Vector2 (JogMovimento.MoveInput.x * JogMovimento.Velocidade, JogMovimento.Rb.linearVelocityY);  //Movimento basico, sem aceleração
+    {
+        switch (JoggMovimento.JogadorEstado)
+        {
+            case JogadorMovimento.jogadorEstados.normal:
+                JoggMovimento.Rb.linearVelocity = new Vector2(JoggMovimento.MoveInput.x * JoggMovimento.Velocidade, JoggMovimento.Rb.linearVelocityY);  //Movimento basico, sem aceleração
+                break;
+
+            case JogadorMovimento.jogadorEstados.dash:
+                break;
+        }
+       
     }
 }

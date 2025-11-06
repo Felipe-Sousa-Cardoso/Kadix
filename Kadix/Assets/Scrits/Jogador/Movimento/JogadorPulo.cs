@@ -17,7 +17,6 @@ public class JogadorPulo : MonoBehaviour, Interfaces.IPulo
     {
         return true;
     }
-
     public void ExecutarPulo()
     {
         print("pulo normal");

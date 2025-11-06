@@ -18,13 +18,25 @@ public class JogadorMovimento : MonoBehaviour
     public bool puloInput; //Altura máxima que um único pulo pode chegar, é aplicado como tempo
     public bool PuloInput { get => puloInput; set => puloInput = value; }
 
-    private float alturaDoPulo = 0.5f; //Altura máxima que um único pulo pode chegar, é aplicado como tempo
+    private float alturaDoPulo = 0.3f; //Altura máxima que um único pulo pode chegar, é aplicado como tempo
     public float AlturaDoPulo { get => alturaDoPulo; set => alturaDoPulo = value; }
   
     private bool noChao; //Verifica se o jogador está sobre um terreno pulável
     public bool NoChao { get => noChao; set => noChao = value; }
 
+    private bool encostandoNaParede; //Verifica se tem uma parede muito proxima ao jogador e ele está se movendo em direção a ela
+    public bool EncostandoNaParede { get => encostandoNaParede; set => encostandoNaParede = value; }
+
     public LayerMask layerChao;
+    #endregion
+    #region maquina de estado
+    public enum jogadorEstados
+    {
+        normal,
+        paradoNoAr,
+        dash
+    }
+    public jogadorEstados JogadorEstado;
     #endregion
     Vector3 offset = new Vector3 (0,-0.2f,0); //offset para a correta verificação do terreno
 
