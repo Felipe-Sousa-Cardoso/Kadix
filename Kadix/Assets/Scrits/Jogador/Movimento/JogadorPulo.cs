@@ -19,12 +19,11 @@ public class JogadorPulo : MonoBehaviour, Interfaces.IPulo
     }
     public void ExecutarPulo()
     {
-        print("pulo normal");
         bufftimer = bufftime;
     }
     public void CancelarPulo()
     {
-        puloConcluido();
+        PuloConcluido();
     }
     void Start()
     {
@@ -50,7 +49,7 @@ public class JogadorPulo : MonoBehaviour, Interfaces.IPulo
             }
             else
             {
-                puloConcluido();
+                PuloConcluido();
             }
         }
 
@@ -71,7 +70,7 @@ public class JogadorPulo : MonoBehaviour, Interfaces.IPulo
             JoggMovimento.Rb.linearVelocity = new Vector2 (JoggMovimento.Rb.linearVelocity.x,5); //Executa a física do pulo
         }    
     }
-    void puloConcluido()
+    void PuloConcluido()
     {
         isJump = false; //para de pular
         timerPulo = 0; //Reseta para um novo pulo

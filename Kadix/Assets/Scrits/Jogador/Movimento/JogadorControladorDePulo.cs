@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static Interfaces;
@@ -30,7 +29,7 @@ public class JogadorControladorDePulo : MonoBehaviour
         pulos = lista.ToArray();
 
         foreach (var pulo in pulos)
-            Debug.Log($"Componente de pulo encontrado: {pulo.GetType().Name}");
+            Debug.Log($"Componente de pulo encontrado: {pulo.Componente.GetType().Name} está {pulo.Componente.enabled}" );
     }
     void InputPuloPressionado(InputAction.CallbackContext context) //Faz com que o pulo comece
     {
@@ -45,12 +44,16 @@ public class JogadorControladorDePulo : MonoBehaviour
     {
         foreach (var pulo in pulos)
         {
+            if (pulo.Componente.enabled == false)
+            {
+                continue;
+            } //Se o jogador não desbloqueou o dash
             if (pulo.Interface.PodePular())
             {
                 puloAtual = pulo;
                 pulo.Interface.ExecutarPulo();
-                return; // executa só o primeiro que for possível
-            }
+                return;
+            }// executa só o primeiro que for possível
         }
     }
 }

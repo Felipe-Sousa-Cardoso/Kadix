@@ -13,11 +13,15 @@ public class JogadorMovimentoBasico : MonoBehaviour
     {
         switch (JoggMovimento.JogadorEstado)
         {
-            case JogadorMovimento.jogadorEstados.normal:
+            case JogadorMovimento.JogadorEstados.normal:
                 JoggMovimento.Rb.linearVelocity = new Vector2(JoggMovimento.MoveInput.x * JoggMovimento.Velocidade, JoggMovimento.Rb.linearVelocityY);  //Movimento basico, sem aceleração
                 break;
 
-            case JogadorMovimento.jogadorEstados.dash:
+            case JogadorMovimento.JogadorEstados.semInputX:
+                break;
+
+            case JogadorMovimento.JogadorEstados.paradoNoAr:
+                JoggMovimento.Rb.linearVelocity = new Vector2(JoggMovimento.Rb.linearVelocity.x, 0);  //mantém apenas o deslocamento horizontal, sem o input no x
                 break;
         }
        

@@ -30,13 +30,13 @@ public class JogadorMovimento : MonoBehaviour
     public LayerMask layerChao;
     #endregion
     #region maquina de estado
-    public enum jogadorEstados
+    public enum JogadorEstados
     {
         normal,
         paradoNoAr,
-        dash
+        semInputX
     }
-    public jogadorEstados JogadorEstado;
+    public JogadorEstados JogadorEstado;
     #endregion
     Vector3 offset = new Vector3 (0,-0.2f,0); //offset para a correta verificação do terreno
 

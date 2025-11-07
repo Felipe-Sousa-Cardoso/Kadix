@@ -19,15 +19,14 @@ public class JogadorPuloDuplo : MonoBehaviour, Interfaces.IPulo
     }
     public void ExecutarPulo()
     {
-        print("Pulo duplo");
         isJump = true;
         puloDuploDisponivel = false;
     }
     public void CancelarPulo()
     {
-        puloConcluido();
+        PuloConcluido();
     }
-    void puloConcluido()
+    void PuloConcluido()
     {
         isJump = false; //para de pular
         timerPulo = 0; //Reseta para um novo pulo
@@ -43,7 +42,7 @@ public class JogadorPuloDuplo : MonoBehaviour, Interfaces.IPulo
             }
             else
             {
-                puloConcluido();
+                PuloConcluido();
             }
         }
         if (JoggMovimento.NoChao && !puloDuploDisponivel)

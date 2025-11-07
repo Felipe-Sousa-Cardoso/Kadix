@@ -1384,6 +1384,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: b8fe35df-9e4d-4d45-9ae9-2b21468a2690
     m_ActionName: 'Player/Pulo[/Keyboard/space]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ac9c002f-2dec-431c-a8e0-ca2cb7fdd091
+    m_ActionName: 'Player/Dash[/Keyboard/c]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -1402,7 +1406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputManager
   InputA_jogadorMovimento:
-    m_Name: 
+    m_Name: Input A_jogador Movimento
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: b889211f-1f10-42c3-8796-b6730d8c6148
@@ -1411,7 +1415,7 @@ MonoBehaviour:
     m_SingletonActionBindings: []
     m_Flags: 0
   Input_JogadorMovimentoPulo:
-    m_Name: 
+    m_Name: Input_Jogador Movimento Pulo
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: 70dfa637-8d64-4764-b75d-0fd0a137e38e

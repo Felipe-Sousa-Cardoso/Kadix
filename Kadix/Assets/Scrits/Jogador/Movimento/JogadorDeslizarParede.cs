@@ -20,7 +20,7 @@ public class JogadorDeslizarParede : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (JoggMovimento.EncostandoNaParede && !JoggMovimento.NoChao && JoggMovimento.JogadorEstado==JogadorMovimento.jogadorEstados.normal)
+        if (JoggMovimento.EncostandoNaParede && !JoggMovimento.NoChao && JoggMovimento.JogadorEstado==JogadorMovimento.JogadorEstados.normal)
         {
             JoggMovimento.Rb.linearVelocity = new Vector2(0, -1f);
         }

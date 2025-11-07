@@ -4,25 +4,30 @@ public class JogadorPularDaParede : MonoBehaviour, Interfaces.IPulo
 {
     JogadorMovimento JoggMovimento;
 
-    float timerPulo; //Usado para voltar o estado normal do jogador
+    float timerMenorPulo; //Tempo minimo de pulo
+    float timerMaiorPulo; //Tempo máximo de pulo
+
+    bool pulando;
+
     public bool PodePular()
     {
         return JoggMovimento.EncostandoNaParede;
     }
     public void ExecutarPulo()
     {
-        print("pulo da parede");
-        timerPulo = 0.2f;
-        JoggMovimento.JogadorEstado = JogadorMovimento.jogadorEstados.dash;
+        pulando = true;
+        timerMenorPulo = 0.2f;
+        timerMaiorPulo = 0.2f;
+        JoggMovimento.JogadorEstado = JogadorMovimento.JogadorEstados.semInputX;
         JoggMovimento.Rb.AddForce(new Vector2 (-JoggMovimento.MoveInput.x*2 ,8), ForceMode2D.Impulse);
     }
     public void CancelarPulo()
     {
-        //puloConcluido();
+        pulando = false;
     }
-    void puloConcluido()
+    void PuloConcluido()
     {
-        JoggMovimento.JogadorEstado = JogadorMovimento.jogadorEstados.normal;
+        JoggMovimento.JogadorEstado = JogadorMovimento.JogadorEstados.normal;
     }
 
     void Start()
@@ -31,13 +36,22 @@ public class JogadorPularDaParede : MonoBehaviour, Interfaces.IPulo
     }
     void Update()
     {
-        if (timerPulo > 0)
+        if (timerMenorPulo > 0) //se ainda resta tempo minimo decresse
         {
-            timerPulo-=Time.deltaTime;
+            timerMenorPulo-=Time.deltaTime;
         }
         else 
         {
-            puloConcluido();
+            if (timerMaiorPulo > 0)//se ainda resta tempo máximo decresse
+            {
+                timerMaiorPulo -= Time.deltaTime;
+            }
+        
+            if (!pulando|| timerMaiorPulo<0) //Se o jogador apertou qualquer input 
+            {
+                PuloConcluido();
+            }
+               
         }
 
     }
