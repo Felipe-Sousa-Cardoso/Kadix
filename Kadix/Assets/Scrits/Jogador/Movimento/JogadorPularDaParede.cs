@@ -19,7 +19,7 @@ public class JogadorPularDaParede : MonoBehaviour, Interfaces.IPulo
         timerMenorPulo = 0.2f;
         timerMaiorPulo = 0.2f;
         JoggMovimento.JogadorEstado = JogadorMovimento.JogadorEstados.semInputX;
-        JoggMovimento.Rb.AddForce(new Vector2 (-JoggMovimento.MoveInput.x*2 ,8), ForceMode2D.Impulse);
+        JoggMovimento.Rb.AddForce(new Vector2 (-JoggMovimento.DireçaoDoJogador*2 ,8), ForceMode2D.Impulse);
     }
     public void CancelarPulo()
     {

@@ -5,8 +5,9 @@ public class InputManager : MonoBehaviour
 {
     public static InputManager Instancia;
 
-    public InputAction InputA_jogadorMovimento;
+    public InputAction Input_jogadorMovimentoBasico;
     public InputAction Input_JogadorMovimentoPulo;
+    public InputAction Input_JogadorMovimentoDash;
 
     void Awake() //Verificação de unicidade
     {
@@ -19,8 +20,9 @@ public class InputManager : MonoBehaviour
             Destroy(this);
         }
 
-        InputA_jogadorMovimento = InputSystem.actions.FindAction("Movimento");
+        Input_jogadorMovimentoBasico = InputSystem.actions.FindAction("Movimento");
         Input_JogadorMovimentoPulo = InputSystem.actions.FindAction("Pulo");
+        Input_JogadorMovimentoDash = InputSystem.actions.FindAction("Dash");
     }
 
    

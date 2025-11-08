@@ -665,6 +665,7 @@ GameObject:
   - component: {fileID: 890345798}
   - component: {fileID: 890345801}
   - component: {fileID: 890345802}
+  - component: {fileID: 890345804}
   m_Layer: 0
   m_Name: Jogador
   m_TagString: Untagged
@@ -757,11 +758,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8369ddd9ce56b994ba81524648afcf2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::JogadorMovimento
-  puloInput: 0
+  moveInput: {x: 0, y: 0}
+  "dire\xE7aoDoJogador": 0
   layerChao:
     serializedVersion: 2
     m_Bits: 8
-  JogadorEstado: 0
 --- !u!50 &890345796
 Rigidbody2D:
   serializedVersion: 5
@@ -907,6 +908,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a170b558d882f614d99bb1fb19bbc168, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::JogadorPularDaParede
+--- !u!114 &890345804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890345790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2bdbd700cf746b439ca1d418fb97e6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: "Assembly-CSharp::JogadorAnima\xE7\xF5es"
 --- !u!1 &1154375779
 GameObject:
   m_ObjectHideFlags: 0
