@@ -45,7 +45,7 @@ public class JogadorPuloDuplo : MonoBehaviour, Interfaces.IPulo
                 PuloConcluido();
             }
         }
-        if (JoggMovimento.NoChao && !puloDuploDisponivel)
+        if ((JoggMovimento.NoChao || JoggMovimento.EncostandoNaParede )&& !puloDuploDisponivel) //recarrega o pulo duplo se está encostando no chão ou na parede
         {
             puloDuploDisponivel = true;
         }

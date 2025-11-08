@@ -8,7 +8,7 @@ public class JogadorMovimento : MonoBehaviour
     #endregion
     #region Variáveis
 
-    [SerializeField] private Vector2 moveInput; //Input de movimento horizontal
+    private Vector2 moveInput; //Input de movimento horizontal
     public Vector2 MoveInput { get => moveInput; set => moveInput = value; }
 
     private int velocidade = 5; //Velocidade de movimento do jogador
@@ -23,8 +23,9 @@ public class JogadorMovimento : MonoBehaviour
     private bool encostandoNaParede; //Verifica se tem uma parede muito proxima ao jogador e ele está se movendo em direção a ela
     public bool EncostandoNaParede { get => encostandoNaParede; set => encostandoNaParede = value; }
 
-    [SerializeField] private int direçaoDoJogador; //Guarda o ultimo input de movimento dado, controlado pelas animações
+    private int direçaoDoJogador; //Guarda o ultimo input de movimento dado, controlado pelas animações
     public int DireçaoDoJogador { get => direçaoDoJogador; set => direçaoDoJogador = value; }
+
     public LayerMask layerChao;
     #endregion
     #region maquina de estado
@@ -34,7 +35,7 @@ public class JogadorMovimento : MonoBehaviour
         paradoNoAr,
         semInputX
     }
-    JogadorEstados jogadorEstado;
+    [SerializeField] JogadorEstados jogadorEstado;
     public JogadorEstados JogadorEstado { get => jogadorEstado; set => jogadorEstado = value; }
   
     #endregion

@@ -15,6 +15,7 @@ public class JogadorControladorDePulo : MonoBehaviour
     }
     void Start()
     {
+        JoggMovimento = GetComponent<JogadorMovimento>();
         InputManager.Instancia.Input_JogadorMovimentoPulo.started += InputPuloPressionado; //Inscreve nos input a ação de começar e finalizar o pulo
         InputManager.Instancia.Input_JogadorMovimentoPulo.canceled += InputPuloConcluido;
 
@@ -44,6 +45,7 @@ public class JogadorControladorDePulo : MonoBehaviour
     {
         foreach (var pulo in pulos)
         {
+            
             if (pulo.Componente.enabled == false)
             {
                 continue;
@@ -51,6 +53,10 @@ public class JogadorControladorDePulo : MonoBehaviour
             if (pulo.Interface.PodePular())
             {
                 puloAtual = pulo;
+                if (JoggMovimento.JogadorEstado != JogadorMovimento.JogadorEstados.normal)
+                {
+                    JoggMovimento.JogadorEstado = JogadorMovimento.JogadorEstados.normal;
+                }
                 pulo.Interface.ExecutarPulo();
                 return;
             }// executa só o primeiro que for possível

@@ -666,6 +666,7 @@ GameObject:
   - component: {fileID: 890345801}
   - component: {fileID: 890345802}
   - component: {fileID: 890345804}
+  - component: {fileID: 890345805}
   m_Layer: 0
   m_Name: Jogador
   m_TagString: Untagged
@@ -758,11 +759,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8369ddd9ce56b994ba81524648afcf2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::JogadorMovimento
-  moveInput: {x: 0, y: 0}
-  "dire\xE7aoDoJogador": 0
   layerChao:
     serializedVersion: 2
     m_Bits: 8
+  jogadorEstado: 0
 --- !u!50 &890345796
 Rigidbody2D:
   serializedVersion: 5
@@ -920,6 +920,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2bdbd700cf746b439ca1d418fb97e6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: "Assembly-CSharp::JogadorAnima\xE7\xF5es"
+--- !u!114 &890345805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890345790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8cd321b8cc605c409042639cb25ad15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JogadorDash
+  timerDash: 0
 --- !u!1 &1154375779
 GameObject:
   m_ObjectHideFlags: 0
@@ -1418,11 +1431,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef25f106074a3494dbdc2097308cfd87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputManager
-  InputA_jogadorMovimento:
-    m_Name: Input A_jogador Movimento
+  Input_jogadorMovimentoBasico:
+    m_Name: Input_jogador Movimento Basico
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: b889211f-1f10-42c3-8796-b6730d8c6148
+    m_Id: fee887fa-34d1-4dec-a531-1c28de87db80
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
@@ -1432,6 +1445,15 @@ MonoBehaviour:
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: 70dfa637-8d64-4764-b75d-0fd0a137e38e
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  Input_JogadorMovimentoDash:
+    m_Name: Input_Jogador Movimento Dash
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: f38f3563-e639-4f02-8538-26068b63758b
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
