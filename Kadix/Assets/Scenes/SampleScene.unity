@@ -640,7 +640,7 @@ Transform:
   m_GameObject: {fileID: 704437583}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.44, y: 2.76, z: 0}
+  m_LocalPosition: {x: 0.08, y: 1.81, z: 0}
   m_LocalScale: {x: 2.2993739, y: 0.54690397, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -660,6 +660,7 @@ GameObject:
   - component: {fileID: 890345799}
   - component: {fileID: 890345795}
   - component: {fileID: 890345797}
+  - component: {fileID: 890345806}
   - component: {fileID: 890345803}
   - component: {fileID: 890345800}
   - component: {fileID: 890345798}
@@ -683,7 +684,7 @@ Transform:
   m_GameObject: {fileID: 890345790}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.07, y: -0.23, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -759,6 +760,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8369ddd9ce56b994ba81524648afcf2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::JogadorMovimento
+  "dire\xE7aoDoJogador": 0
   layerChao:
     serializedVersion: 2
     m_Bits: 8
@@ -933,6 +935,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::JogadorDash
   timerDash: 0
+--- !u!114 &890345806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890345790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f43d8cfe21aec349a8218af68143abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JogadorPulaDaBeirada
 --- !u!1 &1154375779
 GameObject:
   m_ObjectHideFlags: 0
@@ -1338,7 +1352,7 @@ Transform:
   m_GameObject: {fileID: 1950562398}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.12, y: 1.38, z: 0}
+  m_LocalPosition: {x: -0.23, y: 0.53, z: 0}
   m_LocalScale: {x: 2.2993739, y: 0.54690397, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

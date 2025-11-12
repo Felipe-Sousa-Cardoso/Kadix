@@ -33,7 +33,8 @@ public class JogadorMovimento : MonoBehaviour
     {
         normal,
         paradoNoAr,
-        semInputX
+        semInputX,
+        puloBeirada
     }
     [SerializeField] JogadorEstados jogadorEstado;
     public JogadorEstados JogadorEstado { get => jogadorEstado; set => jogadorEstado = value; }
@@ -49,7 +50,7 @@ public class JogadorMovimento : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moveInput = InputManager.Instancia.Input_jogadorMovimentoBasico.ReadValue<Vector2>();
+        moveInput = InputManager.Instancia.Input_JogadorMovimentoBasico.ReadValue<Vector2>();
         noChao = Physics2D.OverlapBox(transform.position+offset, new Vector2(0.35f,0.1f),0f, layerChao); //Verifica o chão corretamente
     }
     private void OnDrawGizmosSelected()

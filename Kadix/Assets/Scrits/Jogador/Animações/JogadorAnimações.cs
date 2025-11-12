@@ -7,7 +7,7 @@ public class JogadorAnimações : MonoBehaviour
     void Start()
     {
         Joggmovimento = GetComponent<JogadorMovimento>();
-        InputManager.Instancia.Input_jogadorMovimentoBasico.performed += AlterarDireçao;
+        InputManager.Instancia.Input_JogadorMovimentoBasico.performed += AlterarDireçao;
     }
 
     void AlterarDireçao(InputAction.CallbackContext context)
@@ -29,6 +29,6 @@ public class JogadorAnimações : MonoBehaviour
     void OnDestroy()
     {
         if (InputManager.Instancia != null)
-            InputManager.Instancia.Input_jogadorMovimentoBasico.performed -= AlterarDireçao;
+            InputManager.Instancia.Input_JogadorMovimentoBasico.performed -= AlterarDireçao;
     }
 }

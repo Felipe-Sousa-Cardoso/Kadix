@@ -28,6 +28,7 @@ public class JogadorPularDaParede : MonoBehaviour, Interfaces.IPulo
     void PuloConcluido()
     {
         JoggMovimento.JogadorEstado = JogadorMovimento.JogadorEstados.normal;
+        print("parede concluido");
     }
 
     void Start()
@@ -47,7 +48,7 @@ public class JogadorPularDaParede : MonoBehaviour, Interfaces.IPulo
                 timerMaiorPulo -= Time.deltaTime;
             }
         
-            if ((!pulando|| timerMaiorPulo<0)&&JoggMovimento.JogadorEstado== JogadorMovimento.JogadorEstados.semInputX) //Se o jogador apertou qualquer input 
+            if ((!pulando|| timerMaiorPulo<0)&&JoggMovimento.JogadorEstado == JogadorMovimento.JogadorEstados.semInputX) //Se o jogador apertou qualquer input 
             {
                 PuloConcluido();
             }
