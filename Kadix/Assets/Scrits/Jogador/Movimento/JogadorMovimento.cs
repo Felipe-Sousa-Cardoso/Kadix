@@ -23,7 +23,7 @@ public class JogadorMovimento : MonoBehaviour
     private bool encostandoNaParede; //Verifica se tem uma parede muito proxima ao jogador e ele está se movendo em direção a ela
     public bool EncostandoNaParede { get => encostandoNaParede; set => encostandoNaParede = value; }
 
-    private int direçaoDoJogador; //Guarda o ultimo input de movimento dado, controlado pelas animações
+    [SerializeField] private int direçaoDoJogador; //Guarda o ultimo input de movimento dado, controlado pelas animações
     public int DireçaoDoJogador { get => direçaoDoJogador; set => direçaoDoJogador = value; }
 
     public LayerMask layerChao;

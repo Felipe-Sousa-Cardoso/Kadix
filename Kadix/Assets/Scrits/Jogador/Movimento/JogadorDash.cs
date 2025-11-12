@@ -8,8 +8,6 @@ public class JogadorDash : MonoBehaviour
 
     [SerializeField] float timerDash;
 
-    float direçãoDash;
-
     bool isDashig; //Usada para trocar o estado do jogador apenas 1 vez
     bool podeDash = true; //Usada para evitar vários dahss simultaneos
 
@@ -27,9 +25,12 @@ public class JogadorDash : MonoBehaviour
 
             JoggMovimento.Rb.linearVelocity = Vector2.zero; //Zera o movimento do jogador
 
-            direçãoDash = JoggMovimento.EncostandoNaParede ? -JoggMovimento.DireçaoDoJogador : JoggMovimento.DireçaoDoJogador; //Se o jogador estiver enconstado na parede, o dash saí da parede
-
-            JoggMovimento.Rb.AddForce(new Vector2(direçãoDash * 8, 0), ForceMode2D.Impulse); //Exetuta o dash propriamente dito
+            if (JoggMovimento.EncostandoNaParede) //Se ele está encostando na parede ele vira o jogador
+            {
+                JoggMovimento.DireçaoDoJogador = -JoggMovimento.DireçaoDoJogador;
+            }
+   
+            JoggMovimento.Rb.AddForce(new Vector2(JoggMovimento.DireçaoDoJogador * 8, 0), ForceMode2D.Impulse); //Exetuta o dash propriamente dito
             timerDash = duraçãoDash;
 
             isDashig = true;
