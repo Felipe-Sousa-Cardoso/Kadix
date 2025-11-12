@@ -19,6 +19,8 @@ public class JogadorPuloDuplo : MonoBehaviour, Interfaces.IPulo
     }
     public void ExecutarPulo()
     {
+        JoggMovimento.Rb.linearVelocity = new Vector2(JoggMovimento.Rb.linearVelocityX, 0);
+        JoggMovimento.Rb.AddForce(new Vector2(0, 8), ForceMode2D.Impulse);
         isJump = true;
         puloDuploDisponivel = false;
     }
@@ -49,12 +51,5 @@ public class JogadorPuloDuplo : MonoBehaviour, Interfaces.IPulo
         {
             puloDuploDisponivel = true;
         }
-    }
-    void FixedUpdate()
-    {
-        if (isJump)
-        {
-            JoggMovimento.Rb.linearVelocity = new Vector2(JoggMovimento.Rb.linearVelocity.x, 5); //Executa a física do pulo
-        }
-    }     
+    }    
 }

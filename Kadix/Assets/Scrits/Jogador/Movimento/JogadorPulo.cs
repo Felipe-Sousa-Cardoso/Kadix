@@ -38,6 +38,8 @@ public class JogadorPulo : MonoBehaviour, Interfaces.IPulo
             if (coyotetimer > 0 & !isJump)
             {
                 isJump = true;
+                JoggMovimento.Rb.linearVelocity = new Vector2(JoggMovimento.Rb.linearVelocityX, 0);
+                JoggMovimento.Rb.AddForce(new Vector2(0, 8), ForceMode2D.Impulse);
                 bufftimer = 0;
             }
         }
@@ -62,13 +64,6 @@ public class JogadorPulo : MonoBehaviour, Interfaces.IPulo
             coyotetimer -= Time.deltaTime;
         }
 
-    }
-    void FixedUpdate()
-    {
-        if (isJump)
-        {
-            JoggMovimento.Rb.linearVelocity = new Vector2 (JoggMovimento.Rb.linearVelocity.x,5); //Executa a física do pulo
-        }    
     }
     void PuloConcluido()
     {
