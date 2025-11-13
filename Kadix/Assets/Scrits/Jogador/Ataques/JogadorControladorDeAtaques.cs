@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -6,21 +5,29 @@ using UnityEngine.InputSystem;
 public class JogadorControladorDeAtaques : MonoBehaviour
 {
     [SerializeField]  JogadorControladorMovimento JoggMovimento;
-    [SerializeField] float timerAtaque;
-    [SerializeField] float timerCombo;
 
+    [SerializeField] float timerCombo; //Combo
     [SerializeField] int qualAtaque;
-    [SerializeField] bool podeAtacar;
+
     [SerializeField] bool atacando;
 
+    bool knockback;
+
+    Collider2D[] hits;
+
+    [SerializeField] float dano; //Dano base do jogador, utilizado nos calculos
+
     Vector3 offset; //Offset do detector de ataques
-    Vector3 tamanho; //tamanho da hitbox dos ataques
+    Vector3 tamanhoDoAtaque; //tamanho da hitbox dos ataques
     void Start()
     {
-        podeAtacar = true;
+        dano = 5;
+
         JoggMovimento = transform.parent.GetComponentInChildren<JogadorControladorMovimento>(); //Referencia o componente em outro objeto
+
         InputManager.Instancia.Input_JogadorAtaqueBasico.performed += InputAtaquePressionado;
-        tamanho = new Vector3(0.6f, 0.5f, 0);
+
+        tamanhoDoAtaque = new Vector3(0.6f, 0.3f, 0);
     }
 
     // Update is called once per frame
@@ -28,18 +35,9 @@ public class JogadorControladorDeAtaques : MonoBehaviour
     {
         offset = new Vector3(JoggMovimento.DireçaoDoJogador*0.3f,0,0);
 
-        if (timerAtaque> 0) //Usado para verificar a lógica dos ataques
+        if (timerCombo > 0)
         {
-            timerAtaque -=Time.deltaTime;
-        }
-        else
-        {
-            Gizmos.color = Color.red;
-        }
-
-        if (timerCombo> 0)
-        {
-            timerCombo -=Time.deltaTime;
+            timerCombo-=Time.deltaTime;
         }
         else
         {
@@ -48,9 +46,14 @@ public class JogadorControladorDeAtaques : MonoBehaviour
     }
     void InputAtaquePressionado(InputAction.CallbackContext context) //Faz com que o pulo comece
     {
-        if (podeAtacar&&timerAtaque<=0)
+        if (!atacando)
         {
+            if (qualAtaque > 2)
+            {
+                qualAtaque=0;
+            }
             TentarAtaque(qualAtaque);
+            qualAtaque++;
         }
     }
 
@@ -58,22 +61,53 @@ public class JogadorControladorDeAtaques : MonoBehaviour
     {
        switch (QualAtaque)
        {
-            case 0: print("ataque1"); Ataque(); break; 
-            case 1: print("ataque2"); Ataque(); break;
-            case 2: print("ataque3"); Ataque(); break;
+            case 0: StartCoroutine(Ataque()); break; 
+            case 1: StartCoroutine(Ataque()); break;
+            case 2: StartCoroutine(Ataque()); break;
        }
     }
 
     IEnumerator Ataque()
     {
-        timerAtaque = 0.2f;
         atacando = true;
+        timerCombo = 0.5f;
+        hits = Physics2D.OverlapBoxAll(transform.position + offset, tamanhoDoAtaque, 0f);
+        foreach (Collider2D hit in hits)
+        {
+            if(hit.TryGetComponent<Interfaces.IDanificavel>(out Interfaces.IDanificavel valido))
+            {
+                valido.receberDano(dano);
+                knockback = true;
+            }
+            if (hit.gameObject.layer == 3)
+            {
+                knockback=true;
+            }
+        }
+        if (knockback)
+        {
+            JoggMovimento.JogadorEstado = JogadorControladorMovimento.JogadorEstados.knockback;
+            JoggMovimento.Rb.linearVelocity = new Vector2( 0, JoggMovimento.Rb.linearVelocityY);
+            JoggMovimento.Rb.AddForce(new Vector2(-JoggMovimento.DireçaoDoJogador,0), ForceMode2D.Impulse);  //Se atingiu alguma coisa aplica knockback
+        }
+        knockback = false;
+        yield return new WaitForSeconds(0.2f);
+        JoggMovimento.JogadorEstado = JogadorControladorMovimento.JogadorEstados.normal;
+        atacando = false;
+
+
     }
 
-
-
     private void OnDrawGizmos()
-    {
-        Gizmos.DrawCube(transform.position+offset, tamanho);
+    {      
+        if (atacando)
+        {
+            Gizmos.color = Color.green;
+        }
+        else
+        {
+            Gizmos.color= Color.red;        
+        }
+        Gizmos.DrawCube(transform.position + offset, tamanhoDoAtaque);
     }
 }

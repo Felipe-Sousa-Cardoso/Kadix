@@ -8,4 +8,9 @@ public class Interfaces : MonoBehaviour
         void ExecutarPulo();
         void CancelarPulo();
     }
+    public interface IDanificavel
+    {
+        void receberDano(float dano);  
+    }
+
 }

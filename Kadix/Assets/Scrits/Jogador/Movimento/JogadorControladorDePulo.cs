@@ -28,9 +28,6 @@ public class JogadorControladorDePulo : MonoBehaviour
                 lista.Add(new PuloWrapper { Interface = p, Componente = b });
         }
         pulos = lista.ToArray();
-
-        foreach (var pulo in pulos)
-            Debug.Log($"Componente de pulo encontrado: {pulo.Componente.GetType().Name} está {pulo.Componente.enabled}" );
     }
     void InputPuloPressionado(InputAction.CallbackContext context) //Faz com que o pulo comece
     {

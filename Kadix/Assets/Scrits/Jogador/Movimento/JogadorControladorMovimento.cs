@@ -34,7 +34,8 @@ public class JogadorControladorMovimento : MonoBehaviour
         normal,
         paradoNoAr,
         semInputX,
-        puloBeirada
+        puloBeirada,
+        knockback
     }
     [SerializeField] JogadorEstados jogadorEstado;
     public JogadorEstados JogadorEstado { get => jogadorEstado; set => jogadorEstado = value; }
