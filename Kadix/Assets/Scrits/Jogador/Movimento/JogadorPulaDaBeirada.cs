@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class JogadorPulaDaBeirada : MonoBehaviour, Interfaces.IPulo
 {
-    JogadorMovimento JoggMovimento;
+    JogadorControladorMovimento JoggMovimento;
     bool isJump; //Verifica se o comando de pular foi dado, usado para altura do pulo e verificações
     float timerPulo; //Altura atual do pulo em tempo
     public void CancelarPulo()
@@ -13,10 +13,9 @@ public class JogadorPulaDaBeirada : MonoBehaviour, Interfaces.IPulo
     public void ExecutarPulo()
     {
         JoggMovimento.Rb.linearVelocity = new Vector2(JoggMovimento.Rb.linearVelocityX, 0); //Zera a movimentação do jogador para evitar conflito
-        JoggMovimento.JogadorEstado = JogadorMovimento.JogadorEstados.puloBeirada; //Muda o estado do jogador para não conflitar com o pulo na beirada
+        JoggMovimento.JogadorEstado = JogadorControladorMovimento.JogadorEstados.puloBeirada; //Muda o estado do jogador para não conflitar com o pulo na beirada
         JoggMovimento.Rb.AddForce(new Vector2(0, 8), ForceMode2D.Impulse);//Pulo propriamente dito
         isJump = true;
-        print("beirada");
     }
 
     public bool PodePular()
@@ -31,12 +30,12 @@ public class JogadorPulaDaBeirada : MonoBehaviour, Interfaces.IPulo
         isJump = false; //para de pular
         timerPulo = 0; //Reseta para um novo pulo
         JoggMovimento.Rb.linearVelocity = new Vector2(JoggMovimento.Rb.linearVelocity.x, JoggMovimento.Rb.linearVelocity.y * 0.1f); //freia bruscamente o jogador 
-        JoggMovimento.JogadorEstado = JogadorMovimento.JogadorEstados.normal;
+        JoggMovimento.JogadorEstado = JogadorControladorMovimento.JogadorEstados.normal;
     }
 
     void Start()
     {
-        JoggMovimento = GetComponent<JogadorMovimento>();
+        JoggMovimento = GetComponent<JogadorControladorMovimento>();
     }
 
     void Update()

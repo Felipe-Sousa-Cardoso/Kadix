@@ -3,10 +3,10 @@ using UnityEngine.InputSystem;
 
 public class JogadorAnimações : MonoBehaviour
 {
-    JogadorMovimento Joggmovimento;
+    JogadorControladorMovimento Joggmovimento;
     void Start()
     {
-        Joggmovimento = GetComponent<JogadorMovimento>();
+        Joggmovimento = GetComponent<JogadorControladorMovimento>();
         InputManager.Instancia.Input_JogadorMovimentoBasico.performed += AlterarDireçao;
     }
 

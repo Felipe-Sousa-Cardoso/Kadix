@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class JogadorDash : MonoBehaviour
 {
-    JogadorMovimento JoggMovimento;
+    JogadorControladorMovimento JoggMovimento;
     float duraçãoDash = 0.2f;
 
     [SerializeField] float timerDash;
@@ -13,7 +13,7 @@ public class JogadorDash : MonoBehaviour
 
     void Start()
     {
-        JoggMovimento = GetComponent<JogadorMovimento>(); //recebe o componente que contem as variáveis 
+        JoggMovimento = GetComponent<JogadorControladorMovimento>(); //recebe o componente que contem as variáveis 
         InputManager.Instancia.Input_JogadorMovimentoDash.performed += InputDash;
     }
 
@@ -21,7 +21,7 @@ public class JogadorDash : MonoBehaviour
     {
         if ( podeDash)
         {
-            JoggMovimento.JogadorEstado = JogadorMovimento.JogadorEstados.paradoNoAr; //troca o estado para desativar a gravidade
+            JoggMovimento.JogadorEstado = JogadorControladorMovimento.JogadorEstados.paradoNoAr; //troca o estado para desativar a gravidade
 
             JoggMovimento.Rb.linearVelocity = Vector2.zero; //Zera o movimento do jogador
 
@@ -52,7 +52,7 @@ public class JogadorDash : MonoBehaviour
         else if (isDashig) //Executa somente 1 vez, quando o dash acaba
         {
             isDashig=false;
-            JoggMovimento.JogadorEstado = JogadorMovimento.JogadorEstados.normal;
+            JoggMovimento.JogadorEstado = JogadorControladorMovimento.JogadorEstados.normal;
         }
      
         if ((JoggMovimento.NoChao||JoggMovimento.EncostandoNaParede )&& !podeDash) //recarrega o dash se ele encostar na parede ou no chão

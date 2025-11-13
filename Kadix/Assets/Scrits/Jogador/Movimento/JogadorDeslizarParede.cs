@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class JogadorDeslizarParede : MonoBehaviour
 {
-    JogadorMovimento JoggMovimento;
+    JogadorControladorMovimento JoggMovimento;
     bool direçãonova;
     void Start()
     {
-        JoggMovimento = GetComponent<JogadorMovimento>(); //recebe o componente que contem as variáveis 
+        JoggMovimento = GetComponent<JogadorControladorMovimento>(); //recebe o componente que contem as variáveis 
     }
 
     // Update is called once per frame
@@ -23,7 +23,7 @@ public class JogadorDeslizarParede : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (JoggMovimento.EncostandoNaParede && !JoggMovimento.NoChao&& JoggMovimento.JogadorEstado == JogadorMovimento.JogadorEstados.normal)
+        if (JoggMovimento.EncostandoNaParede && !JoggMovimento.NoChao&& JoggMovimento.JogadorEstado == JogadorControladorMovimento.JogadorEstados.normal)
         { 
           JoggMovimento.Rb.linearVelocity = new Vector2(0, -1f);         
         }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class JogadorPularDaParede : MonoBehaviour, Interfaces.IPulo
 {
-    JogadorMovimento JoggMovimento;
+    JogadorControladorMovimento JoggMovimento;
 
     float timerMenorPulo; //Tempo minimo de pulo
     float timerMaiorPulo; //Tempo máximo de pulo
@@ -18,7 +18,7 @@ public class JogadorPularDaParede : MonoBehaviour, Interfaces.IPulo
         pulando = true;
         timerMenorPulo = 0.2f;
         timerMaiorPulo = 0.2f;
-        JoggMovimento.JogadorEstado = JogadorMovimento.JogadorEstados.semInputX;
+        JoggMovimento.JogadorEstado = JogadorControladorMovimento.JogadorEstados.semInputX;
         JoggMovimento.Rb.AddForce(new Vector2 (-JoggMovimento.DireçaoDoJogador*2 ,8), ForceMode2D.Impulse);
     }
     public void CancelarPulo()
@@ -27,13 +27,12 @@ public class JogadorPularDaParede : MonoBehaviour, Interfaces.IPulo
     }
     void PuloConcluido()
     {
-        JoggMovimento.JogadorEstado = JogadorMovimento.JogadorEstados.normal;
-        print("parede concluido");
+        JoggMovimento.JogadorEstado = JogadorControladorMovimento.JogadorEstados.normal;
     }
 
     void Start()
     {
-        JoggMovimento = GetComponent<JogadorMovimento>();
+        JoggMovimento = GetComponent<JogadorControladorMovimento>();
     }
     void Update()
     {
@@ -48,7 +47,7 @@ public class JogadorPularDaParede : MonoBehaviour, Interfaces.IPulo
                 timerMaiorPulo -= Time.deltaTime;
             }
         
-            if ((!pulando|| timerMaiorPulo<0)&&JoggMovimento.JogadorEstado == JogadorMovimento.JogadorEstados.semInputX) //Se o jogador apertou qualquer input 
+            if ((!pulando|| timerMaiorPulo<0)&&JoggMovimento.JogadorEstado == JogadorControladorMovimento.JogadorEstados.semInputX) //Se o jogador apertou qualquer input 
             {
                 PuloConcluido();
             }

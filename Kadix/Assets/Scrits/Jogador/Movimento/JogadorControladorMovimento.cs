@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class JogadorMovimento : MonoBehaviour
+public class JogadorControladorMovimento : MonoBehaviour
 {
     #region Componentes da unity
     private Rigidbody2D rb;
@@ -44,7 +44,8 @@ public class JogadorMovimento : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponentInParent<Rigidbody2D>();
+        direçaoDoJogador = 1; //Garante que o jogador começa olhando para frente
     }
 
     // Update is called once per frame

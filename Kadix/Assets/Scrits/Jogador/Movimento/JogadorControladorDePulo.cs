@@ -5,7 +5,7 @@ using static Interfaces;
 
 public class JogadorControladorDePulo : MonoBehaviour
 {
-    protected JogadorMovimento JoggMovimento;
+    protected JogadorControladorMovimento JoggMovimento;
     [SerializeField] PuloWrapper[] pulos;
     [SerializeField] PuloWrapper puloAtual;
     public struct PuloWrapper
@@ -15,7 +15,7 @@ public class JogadorControladorDePulo : MonoBehaviour
     }
     void Start()
     {
-        JoggMovimento = GetComponent<JogadorMovimento>();
+        JoggMovimento = GetComponent<JogadorControladorMovimento>();
         InputManager.Instancia.Input_JogadorMovimentoPulo.started += InputPuloPressionado; //Inscreve nos input a ação de começar e finalizar o pulo
         InputManager.Instancia.Input_JogadorMovimentoPulo.canceled += InputPuloConcluido;
 
@@ -53,9 +53,9 @@ public class JogadorControladorDePulo : MonoBehaviour
             if (pulo.Interface.PodePular())
             {
                 puloAtual = pulo;
-                if (JoggMovimento.JogadorEstado != JogadorMovimento.JogadorEstados.normal)
+                if (JoggMovimento.JogadorEstado != JogadorControladorMovimento.JogadorEstados.normal)
                 {
-                    JoggMovimento.JogadorEstado = JogadorMovimento.JogadorEstados.normal;
+                    JoggMovimento.JogadorEstado = JogadorControladorMovimento.JogadorEstados.normal;
                 }
                 pulo.Interface.ExecutarPulo();
                 return;

@@ -4,7 +4,7 @@ using static Interfaces;
 
 public class JogadorPulo : MonoBehaviour, Interfaces.IPulo
 {
-    JogadorMovimento JoggMovimento;
+    JogadorControladorMovimento JoggMovimento;
 
     bool isJump; //Verifica se o comando de pular foi dado, usado para altura do pulo e verificações
     float timerPulo; //Altura atual do pulo em tempo
@@ -27,7 +27,7 @@ public class JogadorPulo : MonoBehaviour, Interfaces.IPulo
     }
     void Start()
     {
-        JoggMovimento = GetComponent<JogadorMovimento>();
+        JoggMovimento = GetComponent<JogadorControladorMovimento>();
     }
 
     private void Update()
